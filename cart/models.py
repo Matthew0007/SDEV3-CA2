@@ -20,7 +20,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    quantitiy = models.IntegerField()
+    quantity = models.IntegerField()
     active = models.BooleanField(default=True)
 
 
@@ -28,6 +28,6 @@ class CartItem(models.Model):
         db_table = 'CartItem'
 
     def sub_total(self):
-        return self.product.price * self.quantitiy
+        return self.product.price * self.quantity
 
 
