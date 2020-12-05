@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'search_app',
     'cart',
     'stripe',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [str(BASE_DIR.joinpath('shop','templates')),
                 str(BASE_DIR.joinpath('search_app', 'templates')),
-                str(BASE_DIR.joinpath('cart', 'templates'))],
+                str(BASE_DIR.joinpath('cart', 'templates')),
+                str(BASE_DIR.joinpath('order', 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
