@@ -97,7 +97,7 @@ def cart_detail(request, total=0, counter=0, cart_items = None):
                 )
                 order_details.save()
                 for order_item in cart_items:
-                    oi = orderItem.objects.create(
+                    oi = OrderItem.objects.create(
                         product = order_item.product.name,
                         quantity = order_item.quantity,
                         price = order_item.product.price,
