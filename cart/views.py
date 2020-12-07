@@ -59,12 +59,10 @@ def cart_detail(request, total=0, counter=0, cart_items = None):
             billingName = request.POST['stripeBillingName']
             billingAddress1 = request.POST['stripeBillingAddressLine1']
             billingcity = request.POST['stripeBillingAddressCity']
-            billingPostcode = request.POST['stripeBillingAddressZip']
             billingCountry = request.POST['stripeBillingAddressCountryCode']
             shippingName = request.POST['stripeShippingName']
             shippingAddress1 = request.POST['stripeShippingAddressLine1']
             shippingcity = request.POST['stripeShippingAddressCity']
-            shippingPostcode = request.POST['stripeShippingAddressZip']
             shippingCountry = request.POST['stripeShippingAddressCountryCode']
 
             customer = stripe.Customer.create(
@@ -87,12 +85,10 @@ def cart_detail(request, total=0, counter=0, cart_items = None):
                     billingName = billingName,
                     billingAddress1 = billingAddress1,
                     billingCity = billingcity,
-                    billingPostcode = billingPostcode,
                     billingCountry = billingCountry,
                     shippingName = shippingName,
                     shippingAddress1 = shippingAddress1,
                     shippingCity = shippingcity,
-                    shippingPostcode = shippingPostcode,
                     shippingCountry = shippingCountry
                 )
                 order_details.save()
@@ -110,7 +106,7 @@ def cart_detail(request, total=0, counter=0, cart_items = None):
                     order_item.delete()
                     '''The terminal will pwrint this message when the order is saved'''
                     print("The order has beeen placed")      
-                return redirect('shop:allProdCat')
+                return redirect('order:thanks', order_details.id)
             except ObjectDoesNotExist:
                 pass
         except stripe.error.CardError as e:
