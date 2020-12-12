@@ -1,39 +1,69 @@
 {% load static %}
 <nav style="padding-bottom: 5rem;" class="navbar navbar-expand-lg navbar-light bg-white mb-5">
     
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Shoes
-          </a>
-
-          <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'shop:allProdCat'%}">All Shoes</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shoes
+        </a>
+        <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'shop:allProdCat'%}">All Shoes</a>
             <div class="dropdown-divider"></div>
-            {% for cat in links %}
-            <a class="dropdown-item" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
-            {% endfor %}
-         
+              {% for cat in links %}
+              <a class="dropdown-item" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+              {% endfor %}
+        </div>
+      </li>
+      {% if item_count > 0 %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart"></i>({{item_count}})</a>
+      {% endif%}
+      </li>
+        <a style="left: 46.5vw; top: 10px; position:absolute"  class="navbar-brand" href="{% url 'shop:allProdCat' %}"><img style="height:29px;" src="{% static 'images/jumpmanlogo.png' %}" alt="Online Nike Store"></div></a>
+    </ul>
+      
+  
+    <div class="my_custom_menu">
+      <ul>
+      {% if user.is_authenticated %}
+        <li>
+          Welcome, <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false">{{ user.username }} 
+          <i class="fas fa-user-circle"></i></a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="{% url 'order:order_history' %}" class='dropdown-item'>Order History</a>
           </div>
         </li>
-       {% if item_count > 0 %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart"></i>({{item_count}})</a>
-       {% endif%}
+        <li>
+          <a href="{% url 'signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
         </li>
+        {% else %}
+        <li>
+          <a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+        </li>
+        <li>
+          <a href="{% url 'signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+        </li>
+        {% endif %}
       </ul>
+<<<<<<< HEAD
       <a style="left: 48vw; top: 10px; position:absolute"  class="navbar-brand" href="{% url 'shop:allProdCat' %}"><img style="height:29px;" src="{% static 'images/jumpmanlogo.png' %}" alt="Online Nike Store"></div></a>
       
       <form action="{% url 'search_app:searchResult' %}" method="get" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2 text-light rounded-pill" type="search" placeholder="              Search" aria-label="Search" name="q">
         
       </form>
+=======
+>>>>>>> 7d0d9f8023d7c566641b508e69360a7bc894344e
     </div>
-  </nav>
-<nav>
+      
+    <form action="{% url 'search_app:searchResult' %}" method="get" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2 text-light rounded-pill" type="search" placeholder="Search" aria-label="Search" name="q">
+    </form>
+
+</nav>
