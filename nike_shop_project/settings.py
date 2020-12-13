@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'accounts',
     'shop',
     'search_app',
     'cart',
     'stripe',
     'order',
-    'crispy_forms',
+    
     'vouchers',
 ]
 
