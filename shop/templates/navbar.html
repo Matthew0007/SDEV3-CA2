@@ -24,46 +24,39 @@
         <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart"></i>({{item_count}})</a>
       {% endif%}
       </li>
-        <a style="left: 46.5vw; top: 10px; position:absolute"  class="navbar-brand" href="{% url 'shop:allProdCat' %}"><img style="height:29px;" src="{% static 'images/jumpmanlogo.png' %}" alt="Online Nike Store"></div></a>
-    </ul>
-      
-  
-    <div class="my_custom_menu">
-      <ul>
-      {% if user.is_authenticated %}
-        <li>
-          Welcome, <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-          aria-haspopup="true" aria-expanded="false">{{ user.username }} 
-          <i class="fas fa-user-circle"></i></a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a href="{% url 'order:order_history' %}" class='dropdown-item'>Order History</a>
-          </div>
-        </li>
-        <li>
-          <a href="{% url 'signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
-        </li>
-        {% else %}
-        <li>
-          <a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
-        </li>
-        <li>
-          <a href="{% url 'signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
-        </li>
-        {% endif %}
-      </ul>
-<<<<<<< HEAD
-      <a style="left: 48vw; top: 10px; position:absolute"  class="navbar-brand" href="{% url 'shop:allProdCat' %}"><img style="height:29px;" src="{% static 'images/jumpmanlogo.png' %}" alt="Online Nike Store"></div></a>
-      
-      <form action="{% url 'search_app:searchResult' %}" method="get" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2 text-light rounded-pill" type="search" placeholder="              Search" aria-label="Search" name="q">
+        <a style="left: 46.5vw; top: 10px; position:absolute"  class="navbar-brand" href="{% url 'shop:allProdCat' %}"><img style="height:29px;" src="{% static 'images/jumpmanlogo.png' %}" alt="Online Nike Store">
         
-      </form>
-=======
->>>>>>> 7d0d9f8023d7c566641b508e69360a7bc894344e
+        </ul></div></a>
+    
+     
+     
+      
     </div>
       
+   
+   <ul class="navbar-nav">
     <form action="{% url 'search_app:searchResult' %}" method="get" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2 text-light rounded-pill" type="search" placeholder="Search" aria-label="Search" name="q">
     </form>
-
+    {% if user.is_authenticated %}
+    <li class="nav-item text-secondary">
+      Welcome, <a class="nav-link" href="#" class="dropdown-toggle" data-toggle="dropdown" 
+      aria-haspopup="true" aria-expanded="false">{{ user.username }} 
+      <i class="fas fa-user-circle"></i></a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="nav-link" href="{% url 'order:order_history' %}" class='dropdown-item'>Order History</a>
+      </div>
+    </li>
+    <li class="nav-item text-secondary">
+      <a class="nav-link" href="{% url 'signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+    </li>
+    {% else %}
+    <li class="nav-item text-secondary">
+      <a class="nav-link" href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+    </li>
+    {% endif %}
+  </ul>
 </nav>
